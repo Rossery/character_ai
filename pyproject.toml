@@ -1,11 +1,11 @@
 [project]
-name = "nanobot-ai"
+name = "character-ai"
 version = "0.1.4.post3"
-description = "A lightweight personal AI assistant framework"
+description = "Character AI built on top of nanobot"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-    {name = "nanobot contributors"}
+    {name = "character_ai contributors"}
 ]
 keywords = ["ai", "agent", "chatbot"]
 classifiers = [
@@ -62,7 +62,7 @@ dev = [
 ]
 
 [project.scripts]
-nanobot = "nanobot.cli.commands:app"
+character_ai = "nanobot.cli.commands:app"
 
 [build-system]
 requires = ["hatchling"]
