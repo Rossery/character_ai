@@ -1,0 +1,55 @@
+强化学习（RL）最新综述调研报告（截至 2026-03-03）
+
+生成时间：2026-03-03
+调研范围：优先 arXiv 的 RL 及 RL+子方向综述（survey/review/technical survey）
+目标：筛选当前最新且有代表性的综述，并给出可执行阅读路线
+
+一、关键结论
+1) 最新已进入 2026 年批次：截至 2026-03-03，已出现 2026-01 和 2026-02 的 RL 综述（real-world statistical RL、time-delay control RL、safe continual RL）。
+2) 主流热点仍在 LLM/Agentic RL：2025 下半年出现大量 RL-for-LLM/LRM/Agent 综述，并在 2026 继续延展。
+3) 安全与持续学习方向升温：Safe RL + Continual RL 交叉综述开始出现，强调 nonstationary 环境下的安全约束与在线适应。
+4) 通用入门与前沿并进建议：通用综述 1 篇 + 2026 新综述 2 篇 + 领域专题 2 篇。
+
+二、最新综述清单（按时间优先）
+A. 2026（当前最“新”）
+1) Statistical Reinforcement Learning in the Real World: A Survey of Methods and Open Challenges
+   arXiv:2601.15353（2026-01）
+2) Safe Continual Reinforcement Learning Methods for Nonstationary Environments
+   arXiv:2601.05152（2026-01-08）
+3) Reinforcement Learning for Control Systems with Time Delays: A Survey
+   arXiv:2602.00399（2026-02）
+
+B. 2025（近期高影响专题）
+4) A Survey of Reinforcement Learning for Large Reasoning Models
+   arXiv:2509.08827
+5) The Landscape of Agentic Reinforcement Learning for LLMs: A Survey
+   arXiv:2509.02547
+6) Reinforcement Learning Meets Large Language Models
+   arXiv:2509.16679
+7) Reinforcement Learning for Large Model: A Survey
+   arXiv:2508.08189
+8) A Survey of Continual Reinforcement Learning
+   arXiv:2506.21872
+9) A Survey of Safe Reinforcement Learning and Constrained MDPs
+   arXiv:2505.17342
+10) A Survey of In-Context Reinforcement Learning
+    arXiv:2502.07978
+
+C. 2024（基础参照）
+11) A Comprehensive Survey of Reinforcement Learning
+    arXiv:2411.18892
+12) Reinforcement Learning Enhanced LLMs: A Survey
+    arXiv:2412.10400
+13) A Survey of Constraint Formulations in Safe Reinforcement Learning
+    arXiv:2402.02025
+
+三、趋势总结
+1) 从“算法大全”转向“系统问题”：更强调训练基础设施、数据构造、评测协议、部署成本。
+2) RL 与 LLM 深度耦合：RLVR、Agentic RL、长链路推理成为后训练核心机制。
+3) 安全与真实部署并重：safe continual、real-world gap、time-delay control 成为新焦点。
+
+四、建议阅读路径
+1) 先建框架：2411.18892
+2) 补前沿：2509.08827 + 2509.02547 + 2509.16679
+3) 补落地：2505.17342 + 2601.15353 + 2602.00399
+

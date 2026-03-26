@@ -1,0 +1,9 @@
+{
+  "started_at": "2026-03-25T14:32:00.886038+00:00",
+  "turns": 20,
+  "opening": "hello",
+  "run_dir": "/Users/bytedance/Documents/trae_projects/codex_test/llm_duet_test/runs/20260325T143200Z",
+  "model_a": "gemini-3-pro-preview-new",
+  "model_b": "gpt-5.4-2026-03-05",
+  "dry_run": false
+}

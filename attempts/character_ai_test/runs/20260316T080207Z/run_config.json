@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-03-16T08:02:07.294483+00:00",
+  "base_url": "https://search.bytedance.net/gpt/openapi/online",
+  "wire_api": "responses",
+  "model": "gpt-5.3-codex-2026-02-24",
+  "total_seconds": 600,
+  "interval_seconds": 5,
+  "rounds": 121,
+  "dry_run": false
+}

@@ -1,0 +1,44 @@
+Agentic RL 综述与方法巧思报告（截至 2026-03-03）
+
+日期：2026-03-03
+目标：聚焦 agentic RL 相关 survey，提炼“什么方法更好、哪里有巧思”
+
+一、重点 survey（优先阅读）
+1) The Landscape of Agentic Reinforcement Learning for LLMs: A Survey
+   arXiv:2509.02547（v4: 2026-01-24）
+2) Reinforcement Learning Foundations for Deep Research Systems
+   arXiv:2509.06733（TMLR 2026）
+3) A Survey of Reinforcement Learning for Large Reasoning Models
+   arXiv:2509.08827
+4) Reinforcement Learning Meets Large Language Models
+   arXiv:2509.16679
+
+二、方法图谱
+1) 问题建模：将 agent 执行视为 POMDP（状态=轨迹历史，动作=文本+工具，奖励=质量+成本+安全）。
+2) 常见训练范式：
+   - PPO/GRPO 在线优化
+   - DPO/IPO/ORPO 偏好优化
+   - RLVR 可验证奖励驱动
+   - Offline warm-start + Online refinement 混合范式
+
+三、方法巧思（最有用）
+1) 分层 credit assignment：把长任务拆成子目标并给中间奖励，降低方差。
+2) PRM + 结果奖励混合：同时优化过程正确性和最终正确性，减少投机路径。
+3) 可验证器优先奖励设计（RLVR）：在代码/数学任务中稳定性最好。
+4) 工具动作与文本动作解耦：降低动作耦合导致的不稳定。
+5) 成本约束入目标函数：显式约束 token、调用次数和时延，便于生产部署。
+6) 离线轨迹筛选 + 在线难例挖掘：提高 rollout 信息密度和训练性价比。
+
+四、场景化建议
+1) 代码/数学：RLVR + 分层奖励 + offline/online 混合。
+2) 开放域 research agent：分层奖励 + PRM + 成本约束。
+3) 多工具复杂编排：动作解耦 + 安全/成本约束优化。
+4) 小算力团队：偏好优化 warm start + 小步在线 RL。
+
+五、推荐配方
+1) SFT/偏好优化初始化。
+2) 尽可能使用可验证奖励。
+3) 分层任务拆解与中间奖励。
+4) 成本与时延约束。
+5) 在线阶段聚焦难例采样。
+

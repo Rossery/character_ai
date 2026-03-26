@@ -1,0 +1,27 @@
+[project]
+name = "molman"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "denghongyi.2511", email = "denghongyi.2511@bytedance.com" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "httpx[socks]>=0.28.1",
+    "jinja2>=3.1.6",
+    "langchain[openai]>=0.3.27",
+    "langgraph>=0.6.11",
+    "pexpect>=4.9.0",
+    "pydantic>=2.12.5",
+    "pyyaml>=6.0.1",
+    "rich>=14.2.0",
+    "textual>=7.3.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.22,<0.10.0"]
+build-backend = "uv_build"
+
+[project.scripts]
+molman-chat = "molman.ui_app:main"

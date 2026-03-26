@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Duet Transcript</title>
+    <style>
+      :root {
+        --paper: #f6f0e4;
+        --ink: #1d1a17;
+        --muted: #6a6259;
+        --line: rgba(29, 26, 23, 0.12);
+        --gemini: #ffefe3;
+        --gpt: #e7f7ef;
+        --accent: #b55d32;
+        --card-shadow: 0 22px 50px rgba(40, 25, 10, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family: "Iowan Old Style", "Palatino Linotype", "Noto Serif SC", serif;
+        background:
+          radial-gradient(circle at top left, rgba(181, 93, 50, 0.14), transparent 24%),
+          radial-gradient(circle at bottom right, rgba(34, 120, 84, 0.10), transparent 28%),
+          linear-gradient(180deg, #fbf8f2 0%, #f1e9da 100%);
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 28px));
+        margin: 24px auto 48px;
+      }
+
+      .hero {
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: rgba(255, 252, 247, 0.78);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--card-shadow);
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 12px;
+      }
+
+      h1 {
+        margin: 12px 0 10px;
+        font-size: clamp(34px, 6vw, 64px);
+        line-height: 0.95;
+      }
+
+      .summary {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+        max-width: 760px;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .metric {
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.56);
+      }
+
+      .metric-label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .metric-value {
+        font-size: 20px;
+      }
+
+      .stream {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .turn {
+        padding: 18px 18px 16px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        box-shadow: var(--card-shadow);
+        animation: rise 320ms ease;
+      }
+
+      .turn-gemini {
+        background: linear-gradient(180deg, #fff7f0 0%, var(--gemini) 100%);
+      }
+
+      .turn-gpt {
+        background: linear-gradient(180deg, #f5fff9 0%, var(--gpt) 100%);
+      }
+
+      .turn-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+        margin-bottom: 10px;
+      }
+
+      .turn-name {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .turn-index {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .turn-text {
+        white-space: pre-wrap;
+        line-height: 1.8;
+        font-size: 18px;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 880px) {
+        .meta {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          width: min(100%, calc(100% - 18px));
+          margin-top: 10px;
+        }
+
+        .hero {
+          padding: 18px;
+          border-radius: 22px;
+        }
+
+        .meta {
+          grid-template-columns: 1fr;
+        }
+
+        .turn-text {
+          font-size: 17px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="eyebrow">Two Models, One Room</div>
+        <h1>LLM 相互对话实验</h1>
+        <p class="summary">Gemini 3 Pro 和 GPT-5.4 轮流说话，不做人类中介，只保留彼此的上下文。下面这页展示本次 20 轮实验的完整记录。</p>
+        <div class="meta" id="meta"></div>
+      </section>
+      <section class="stream" id="stream"></section>
+    </main>
+    <script>
+      const meta = {"started_at": "2026-03-25T12:48:37.195567+00:00", "turns": 3, "opening": "hello", "run_dir": "/Users/bytedance/Documents/trae_projects/codex_test/llm_duet_test/runs/20260325T124837Z", "model_a": "gemini-3-pro-preview-new", "model_b": "gpt-5.4-2026-03-05", "dry_run": true};
+      const history = [{"turn_index": 1, "speaker_id": "gemini", "speaker_name": "Gemini 3 Pro", "model": "gemini-3-pro-preview-new", "timestamp": "2026-03-25T12:48:37.196485+00:00", "messages": [{"role": "user", "content": [{"type": "text", "text": "hello"}]}], "text": "(dry-run) Gemini 3 Pro 在第 1 轮说了一句占位话。", "raw_response": {"dry_run": true, "speaker": "Gemini 3 Pro"}}, {"turn_index": 2, "speaker_id": "gpt", "speaker_name": "GPT-5.4", "model": "gpt-5.4-2026-03-05", "timestamp": "2026-03-25T12:48:37.197033+00:00", "messages": [{"role": "user", "content": [{"type": "text", "text": "Gemini 3 Pro: (dry-run) Gemini 3 Pro 在第 1 轮说了一句占位话。"}]}], "text": "(dry-run) GPT-5.4 在第 2 轮说了一句占位话。", "raw_response": {"dry_run": true, "speaker": "GPT-5.4"}}, {"turn_index": 3, "speaker_id": "gemini", "speaker_name": "Gemini 3 Pro", "model": "gemini-3-pro-preview-new", "timestamp": "2026-03-25T12:48:37.205125+00:00", "messages": [{"role": "user", "content": [{"type": "text", "text": "Gemini 3 Pro: (dry-run) Gemini 3 Pro 在第 1 轮说了一句占位话。\n\nGPT-5.4: (dry-run) GPT-5.4 在第 2 轮说了一句占位话。"}]}], "text": "(dry-run) Gemini 3 Pro 在第 3 轮说了一句占位话。", "raw_response": {"dry_run": true, "speaker": "Gemini 3 Pro"}}];
+
+      function escapeHtml(value) {
+        return value
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+      }
+
+      document.getElementById("meta").innerHTML = [
+        ["总轮数", String(meta.turns)],
+        ["开场", escapeHtml(meta.opening)],
+        ["开始时间", new Date(meta.started_at).toLocaleString("zh-CN", { hour12: false })],
+        ["运行目录", escapeHtml(meta.run_dir)],
+      ].map(([label, value]) => `
+        <div class="metric">
+          <div class="metric-label">${label}</div>
+          <div class="metric-value">${value}</div>
+        </div>
+      `).join("");
+
+      document.getElementById("stream").innerHTML = history.map((item) => `
+        <article class="turn turn-${item.speaker_id}">
+          <div class="turn-head">
+            <div class="turn-name">${escapeHtml(item.speaker_name)}</div>
+            <div class="turn-index">第 ${item.turn_index} 轮 · ${new Date(item.timestamp).toLocaleTimeString("zh-CN", { hour12: false })}</div>
+          </div>
+          <div class="turn-text">${escapeHtml(item.text)}</div>
+        </article>
+      `).join("");
+    </script>
+  </body>
+</html>
